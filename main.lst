@@ -151,27 +151,29 @@
    151 0000000B 68[17000000]                push eq2
    152 00000010 E8(00000000)                call PrintString
    153 00000015 E8(00000000)                call Printendl
-   154                                  
-   155                                      
-   156 0000001A B800000000                  mov eax, 0h
-   157                                  
-   158 0000001F 66A1[01000000]              mov ax, [B]
-   159 00000025 0305[03000000]              add eax, [C]
-   160 0000002B 0205[00000000]              add al, [A]
-   161 00000031 A3[07000000]                mov [D], eax
-   162                                  
-   163 00000036 E8(00000000)                call PrintRegisters
+   154                                      
+   155 0000001A 68[00000000]                push A
+   156 0000001F E8(00000000)                call Print32bitNumDecimal
+   157 00000024 E8(00000000)                call Printendl
+   158 00000029 B800000000                  mov eax, 0h
+   159                                  
+   160 0000002E 66A1[01000000]              mov ax, [B]
+   161 00000034 0305[03000000]              add eax, [C]
+   162 0000003A 0205[00000000]              add al, [A]
+   163 00000040 A3[07000000]                mov [D], eax
    164                                  
-   165 0000003B B800000000                  mov eax, 0
+   165 00000045 E8(00000000)                call PrintRegisters
    166                                  
-   167 00000040 A0[00000000]                mov al, [A]
-   168 00000045 0305[03000000]              add eax, [C]
-   169 0000004B 662B05[01000000]            sub ax, [B]
-   170 00000052 A3[07000000]                mov [D], eax
-   171                                  
-   172 00000057 E8(00000000)                call PrintRegisters
-   173                                    ;Code ends here
-   174 0000005C 90                        nop
-   175 0000005D B801000000                mov eax,1 ; Exit system call value
-   176 00000062 BB00000000                mov ebx,0 ; Exit return code
-   177 00000067 CD80                      int 80h ; Call the kernel
+   167 0000004A B800000000                  mov eax, 0
+   168                                  
+   169 0000004F A0[00000000]                mov al, [A]
+   170 00000054 0305[03000000]              add eax, [C]
+   171 0000005A 662B05[01000000]            sub ax, [B]
+   172 00000061 A3[07000000]                mov [D], eax
+   173                                  
+   174 00000066 E8(00000000)                call PrintRegisters
+   175                                    ;Code ends here
+   176 0000006B 90                        nop
+   177 0000006C B801000000                mov eax,1 ; Exit system call value
+   178 00000071 BB00000000                mov ebx,0 ; Exit return code
+   179 00000076 CD80                      int 80h ; Call the kernel

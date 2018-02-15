@@ -30,8 +30,10 @@ _start:
     push eq2
     call PrintString
     call Printendl
-
     
+    push A
+    call Print32bitNumDecimal
+    call Printendl
     mov eax, 0h
 
     mov ax, [B]
